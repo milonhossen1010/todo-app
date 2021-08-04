@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>To-do List</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<main>
+  <article id="container">
+    <h1>To-Do List</h1>
+    <ul id="list--sort">
+      <li class=""><button class="nav--button allTodo">All</button></li>
+      <li ><button class="nav--button completed">Completed</button></li>
+      <!-- <li ><button class="nav--button">Failed</button></li> -->
+      <li ><button  class="nav--button clearAll">Clear All</button></li>
+      <li >Task Total: <span id="totalTodo"></span></li>
+    </ul>
+    <p id="demo"></p>
+    <section id="section--add">
+      <input class="name" type="text" placeholder="Project name" name="name" />
+      <input class="cl" type="text" placeholder="Client Name" value=""  />
+      <input  class="date" type="date" placeholder="Date" value=""  />
+      <input class="time" type="time" placeholder="time" value="" />
+      <button class="btn" type="button" >+ Add</button>
+    </section>
+    <div id="list--container">
+      <ul id="todoList" class="list" >
+ 
+        <!-- <div class="list-item--container"  >
+           
+          <li class="items"> <span class="sl">1. </span> <span class="pName">Task name lorem ipsum</span> <span class="cName">Milon</span> <span class="day">1D</span> <span class="hrs">1H</span> <span class="mins">1M</span> <span class="sec">1S</span></li>
+          
+          <div class="delete"><span>✔</span> <span>✗</span></div>
+        </div> -->
+        
+ 
+        
+        
+      </ul>
+    </div>
+  </article>
+</main>
+<!-- partial -->
+  <script  src="script.js"></script>
+
+</body>
+</html>
