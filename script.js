@@ -45,27 +45,31 @@ btn.onclick = () => {
     todoArr = JSON.parse(localStorageVal);
   }
 
+  if (project.value == '' ||  client.value == '' || date.value == '' || time.value == '') {
+    document.querySelector("#mess").innerHTML = "All field are require.";
+  } else {
+    //Array push
+    todoArr.push({
+      project: project.value,
+      client: client.value,
+      date: dates,
+      status: 0,
+    });
+  
+    localStorage.setItem('todoList', JSON.stringify(todoArr));
+    
+    //Input value empty
+    project.value = '';
+    client.value = '';
+    date.value = '';
+    time.value = '';
+  }
 
-  //Array push
-  todoArr.push({
-    project: project.value,
-    client: client.value,
-    date: dates,
-    status: 0,
-  });
-
-  localStorage.setItem('todoList', JSON.stringify(todoArr));
 
 
 
 
 
-
-  //Input value empty
-  project.value = '';
-  client.value = '';
-  date.value = '';
-  time.value = '';
 
 
   //Data show
@@ -101,8 +105,12 @@ function showTodo() {
     let ss = date.getSeconds();
     let nowTime = new Date(yy, m, dd, hh, mm, ss);
 
+  
     //Total date
     let totalTime = new Date(val.date) - nowTime;
+
+  
+
     //Get day hrs mins sec
     let day = parseInt(totalTime / 1000 / 60 / 60 / 24);
     totalTime -= day * 1000 * 60 * 60 * 24;
@@ -112,6 +120,8 @@ function showTodo() {
     totalTime -= mins * 1000 * 60;
     let seconds = parseInt(Math.floor(Math.abs((totalTime / 1000) % 60)));
 
+
+    
 
     if (val.status) {
 
@@ -154,7 +164,6 @@ function showTodo() {
 }
 
 //Show all
-showTodo();
 let interval = setInterval(showTodo, 1000);
 
 /**
@@ -216,9 +225,16 @@ function deleteItem(index) {
  * Clear all 
  */
 clearAll.onclick = function () {
-  localStorage.clear();
-  todoList.innerHTML = '';
+  // localStorage.clear();
+  // todoList.innerHTML = '';
+   //Get value from localStorage
+   let localStorageVal = localStorage.getItem('todoList');
+   let todoArr = JSON.parse(localStorageVal);
+   todoArr = [];
+   localStorage.setItem('todoList', JSON.stringify(todoArr));
+
   showTodo();
+  // clearInterval(interval);
 }
 
 /**
@@ -228,8 +244,8 @@ function status(index) {
   //Get value from localStorage
   let localStorageVal = localStorage.getItem('todoList');
   let todoArr = JSON.parse(localStorageVal);
-  let revArr = todoArr.reverse();
-  revArr[index]['status'] = 1;
+  // let revArr = todoArr.reverse();
+  todoArr[index]['status'] = 1;
 
 
   localStorage.setItem('todoList', JSON.stringify(todoArr));
